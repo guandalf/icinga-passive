@@ -1,0 +1,21 @@
+{
+    "id" : "icinga-passive",
+    "version" : "0.0.1",
+    "name" : "Icinga Passive",
+    "description" : "Sends test results as passive alarms to Icinga",
+    "install": {
+        "windows": [],
+        "linux": [],
+        "darwin": []
+    },
+    "command" : {
+        "windows" : ["bin/icinga-psv-notify"],
+        "linux" : ["bin/icinga-psv-notify"],
+        "darwin" : ["bin/icinga-psv-notify"]
+    },
+    "scope" : ["Execution"],
+    "gaugeVersionSupport": {
+        "minimum": "0.8.0",
+        "maximum": ""
+    }
+}
