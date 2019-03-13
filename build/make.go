@@ -49,7 +49,7 @@ const (
 	bin               = "bin"
 	newDirPermissions = 0755
 	gauge             = "gauge"
-	icingaPassive     = "icinga-psv-notify"
+	icingaPassive     = "icinga-passive"
 	deploy            = "deploy"
 	pluginJsonFile    = "plugin.json"
 	GAUGE_MESSAGES    = "gauge_messages"

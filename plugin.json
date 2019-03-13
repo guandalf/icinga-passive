@@ -9,9 +9,9 @@
         "darwin": []
     },
     "command" : {
-        "windows" : ["bin/icinga-psv-notify"],
-        "linux" : ["bin/icinga-psv-notify"],
-        "darwin" : ["bin/icinga-psv-notify"]
+        "windows" : ["bin/icinga-passive"],
+        "linux" : ["bin/icinga-passive"],
+        "darwin" : ["bin/icinga-passive"]
     },
     "scope" : ["Execution"],
     "gaugeVersionSupport": {
