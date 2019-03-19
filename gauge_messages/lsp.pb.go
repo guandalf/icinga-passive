@@ -4,8 +4,10 @@
 package gauge_messages
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
 	math "math"
 )
 
@@ -84,4 +86,373 @@ var fileDescriptor_ba9c4f454d309be8 = []byte{
 	0xf7, 0x93, 0x75, 0x43, 0x1d, 0x3b, 0xb4, 0xd4, 0x79, 0xb4, 0xa4, 0x07, 0x9d, 0xdd, 0xe2, 0xda,
 	0xf8, 0xf4, 0xa6, 0xe3, 0xae, 0x06, 0x26, 0xe5, 0x40, 0xd0, 0x58, 0xfd, 0xa7, 0x7f, 0x5e, 0x02,
 	0x00, 0x00, 0xff, 0xff, 0x5f, 0x3f, 0x97, 0x76, 0xd4, 0x03, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// LspServiceClient is the client API for LspService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type LspServiceClient interface {
+	GetStepNames(ctx context.Context, in *StepNamesRequest, opts ...grpc.CallOption) (*StepNamesResponse, error)
+	CacheFile(ctx context.Context, in *CacheFileRequest, opts ...grpc.CallOption) (*Empty, error)
+	GetStepPositions(ctx context.Context, in *StepPositionsRequest, opts ...grpc.CallOption) (*StepPositionsResponse, error)
+	GetImplementationFiles(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ImplementationFileListResponse, error)
+	ImplementStub(ctx context.Context, in *StubImplementationCodeRequest, opts ...grpc.CallOption) (*FileDiff, error)
+	ValidateStep(ctx context.Context, in *StepValidateRequest, opts ...grpc.CallOption) (*StepValidateResponse, error)
+	Refactor(ctx context.Context, in *RefactorRequest, opts ...grpc.CallOption) (*RefactorResponse, error)
+	GetStepName(ctx context.Context, in *StepNameRequest, opts ...grpc.CallOption) (*StepNameResponse, error)
+	GetGlobPatterns(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ImplementationFileGlobPatternResponse, error)
+	KillProcess(ctx context.Context, in *KillProcessRequest, opts ...grpc.CallOption) (*Empty, error)
+}
+
+type lspServiceClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewLspServiceClient(cc *grpc.ClientConn) LspServiceClient {
+	return &lspServiceClient{cc}
+}
+
+func (c *lspServiceClient) GetStepNames(ctx context.Context, in *StepNamesRequest, opts ...grpc.CallOption) (*StepNamesResponse, error) {
+	out := new(StepNamesResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/GetStepNames", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) CacheFile(ctx context.Context, in *CacheFileRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/CacheFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) GetStepPositions(ctx context.Context, in *StepPositionsRequest, opts ...grpc.CallOption) (*StepPositionsResponse, error) {
+	out := new(StepPositionsResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/GetStepPositions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) GetImplementationFiles(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ImplementationFileListResponse, error) {
+	out := new(ImplementationFileListResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/GetImplementationFiles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) ImplementStub(ctx context.Context, in *StubImplementationCodeRequest, opts ...grpc.CallOption) (*FileDiff, error) {
+	out := new(FileDiff)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/ImplementStub", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) ValidateStep(ctx context.Context, in *StepValidateRequest, opts ...grpc.CallOption) (*StepValidateResponse, error) {
+	out := new(StepValidateResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/ValidateStep", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) Refactor(ctx context.Context, in *RefactorRequest, opts ...grpc.CallOption) (*RefactorResponse, error) {
+	out := new(RefactorResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/Refactor", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) GetStepName(ctx context.Context, in *StepNameRequest, opts ...grpc.CallOption) (*StepNameResponse, error) {
+	out := new(StepNameResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/GetStepName", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) GetGlobPatterns(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ImplementationFileGlobPatternResponse, error) {
+	out := new(ImplementationFileGlobPatternResponse)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/GetGlobPatterns", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *lspServiceClient) KillProcess(ctx context.Context, in *KillProcessRequest, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/gauge.messages.lspService/KillProcess", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// LspServiceServer is the server API for LspService service.
+type LspServiceServer interface {
+	GetStepNames(context.Context, *StepNamesRequest) (*StepNamesResponse, error)
+	CacheFile(context.Context, *CacheFileRequest) (*Empty, error)
+	GetStepPositions(context.Context, *StepPositionsRequest) (*StepPositionsResponse, error)
+	GetImplementationFiles(context.Context, *Empty) (*ImplementationFileListResponse, error)
+	ImplementStub(context.Context, *StubImplementationCodeRequest) (*FileDiff, error)
+	ValidateStep(context.Context, *StepValidateRequest) (*StepValidateResponse, error)
+	Refactor(context.Context, *RefactorRequest) (*RefactorResponse, error)
+	GetStepName(context.Context, *StepNameRequest) (*StepNameResponse, error)
+	GetGlobPatterns(context.Context, *Empty) (*ImplementationFileGlobPatternResponse, error)
+	KillProcess(context.Context, *KillProcessRequest) (*Empty, error)
+}
+
+func RegisterLspServiceServer(s *grpc.Server, srv LspServiceServer) {
+	s.RegisterService(&_LspService_serviceDesc, srv)
+}
+
+func _LspService_GetStepNames_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StepNamesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).GetStepNames(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/GetStepNames",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).GetStepNames(ctx, req.(*StepNamesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_CacheFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CacheFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).CacheFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/CacheFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).CacheFile(ctx, req.(*CacheFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_GetStepPositions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StepPositionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).GetStepPositions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/GetStepPositions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).GetStepPositions(ctx, req.(*StepPositionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_GetImplementationFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).GetImplementationFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/GetImplementationFiles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).GetImplementationFiles(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_ImplementStub_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StubImplementationCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).ImplementStub(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/ImplementStub",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).ImplementStub(ctx, req.(*StubImplementationCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_ValidateStep_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StepValidateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).ValidateStep(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/ValidateStep",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).ValidateStep(ctx, req.(*StepValidateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_Refactor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefactorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).Refactor(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/Refactor",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).Refactor(ctx, req.(*RefactorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_GetStepName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StepNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).GetStepName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/GetStepName",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).GetStepName(ctx, req.(*StepNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_GetGlobPatterns_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).GetGlobPatterns(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/GetGlobPatterns",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).GetGlobPatterns(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LspService_KillProcess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(KillProcessRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LspServiceServer).KillProcess(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gauge.messages.lspService/KillProcess",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LspServiceServer).KillProcess(ctx, req.(*KillProcessRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _LspService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "gauge.messages.lspService",
+	HandlerType: (*LspServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetStepNames",
+			Handler:    _LspService_GetStepNames_Handler,
+		},
+		{
+			MethodName: "CacheFile",
+			Handler:    _LspService_CacheFile_Handler,
+		},
+		{
+			MethodName: "GetStepPositions",
+			Handler:    _LspService_GetStepPositions_Handler,
+		},
+		{
+			MethodName: "GetImplementationFiles",
+			Handler:    _LspService_GetImplementationFiles_Handler,
+		},
+		{
+			MethodName: "ImplementStub",
+			Handler:    _LspService_ImplementStub_Handler,
+		},
+		{
+			MethodName: "ValidateStep",
+			Handler:    _LspService_ValidateStep_Handler,
+		},
+		{
+			MethodName: "Refactor",
+			Handler:    _LspService_Refactor_Handler,
+		},
+		{
+			MethodName: "GetStepName",
+			Handler:    _LspService_GetStepName_Handler,
+		},
+		{
+			MethodName: "GetGlobPatterns",
+			Handler:    _LspService_GetGlobPatterns_Handler,
+		},
+		{
+			MethodName: "KillProcess",
+			Handler:    _LspService_KillProcess_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "lsp.proto",
 }

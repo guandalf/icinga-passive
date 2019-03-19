@@ -120,8 +120,13 @@ func createReport(suiteResult *gauge_messages.SuiteExecutionResult) {
 
 	var mpd [1]string
 	mpd[0] = "result=0;1;2;0;3"
-	message := fmt.Sprintf("<p>Project: %s</p>", suiteResult.GetSuiteResult().GetProjectName())
-	m := IcingaPassiveMessage{message, 0, mpd}
+	message := fmt.Sprintf("Error message to be implemented")
+	failed :=suiteResult.GetSuiteResult().GetFailed()
+	icingaStatusCode := 0
+	if failed {
+		icingaStatusCode = 2
+	}
+	m := IcingaPassiveMessage{message, icingaStatusCode , mpd}
 	b, err := json.Marshal(m)
 	if err == nil {
 		fmt.Printf("%s\n", b)
@@ -236,8 +241,6 @@ func detectFlapping(values []int64) bool {
 			oldState = values[i-1]
 			newState = values[i]
 		}
-
-		//fmt.Printf("Old state: %b New state: %b", oldState, newState)
 
 		if oldState != newState {
 			flappingCount++
